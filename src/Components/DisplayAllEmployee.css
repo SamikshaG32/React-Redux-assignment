@@ -1,0 +1,110 @@
+/* Employee.css */
+
+/* Employee page container */
+.employee-page {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  /* Title */
+  .employee-list-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Search and Add Employee button section */
+  .search-sort-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex: 1; /* Ensure the search container takes available space */
+  }
+  
+  .search-input {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 250px;
+  }
+  
+  .add-employee-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+  }
+  
+  .add-employee-button i {
+    font-size: 18px; /* Icon size */
+  }
+  
+  .add-employee-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Employee table */
+  .employee-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .employee-table th, .employee-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .employee-table th {
+    cursor: pointer; /* Indicates clickable headers */
+    background-color: #f2f2f2;
+  }
+  
+  .employee-table th:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .employee-table td button {
+    padding: 6px 12px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* View, Update, Delete buttons */
+  .view-button, .update-button {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .view-button:hover, .update-button:hover {
+    opacity: 0.8;
+    background-color: #0056b3;
+  }
+  
+  .delete-button {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333;
+  }
+  
