@@ -17,14 +17,16 @@ const EditEmployee = () => {
     email: employee ? employee.email : '',
   });
 
-  useEffect(() => {
-    if (employee) {
-      setFormData({
-        name: employee.name,
-        email: employee.email,
-      });
-    }
-  }, [employee]); // whenever emp wil updated, useEffect will call
+
+  // useEffect is not required because useState is already setting updated data
+  // useEffect(() => {
+  //   if (employee) {
+  //     setFormData({
+  //       name: employee.name,
+  //       email: employee.email,
+  //     });
+  //   }
+  // }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target; //dynamically created key i.e name for both name and email

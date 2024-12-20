@@ -1,28 +1,44 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import App from '../App';
 import { Provider } from 'react-redux';
-import store from './redux/store';
- 
-// Helper function to render the App component with the necessary context (Redux store and Router)
-const renderAppWithProviders = () => {
-  return render(
-    <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
-    </Provider>
-  );
-};
+import store from '../Redux/Store';
+import axios from 'axios'
+import DisplayAllEmployee from '../Components/DisplayAllEmployee'
  
 describe('App Component', () => {
-  test('renders Employee component on the home route ("/")', async () => {
-    renderAppWithProviders();
+  beforeEach(async () => {
+    // Here’s how you can mock console.warn during testing to prevent these warnings from showing up
+    jest.spyOn(console, 'warn').mockImplementation((msg) => {
+      if (msg.includes('React Router Future Flag Warning')) return;
+      console.warn(msg);
+    });
  
-    // Ensure that the Employee component is rendered
-    const employeeHeading = await screen.findByText(/Employee List/i);
-    expect(employeeHeading).toBeInTheDocument();
+    // Mock the axios GET request to simulate fetching data
+    axios.get.mockResolvedValueOnce({
+      data: [
+        { id: 1, name: 'John Doe', email: 'john@example.com' },
+        { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
+      ],
+    });
+ 
+    // Render the component with Redux Provider and Router
+    await waitFor(async () => {
+      render(
+        <Provider store={store}>
+          <Router>
+           <DisplayAllEmployee></DisplayAllEmployee>
+          </Router>
+        </Provider>
+      );
+    });
   });
+ 
+ test('Set employee list', async () => {
+    // Assert that the employees are displayed
+    await waitFor(() => expect(screen.getByText('John Doe')).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText('Jane Smith')).toBeInTheDocument());
+  });
+ 
 });
  
  

@@ -10,10 +10,13 @@ const DisplayAllEmployee = () => {
     const employees = useSelector((state) => state.employees.employees);
   
     useEffect(() => {
+      // dispatch(fetchEmployees());
       if(!employees.length) { // added this condition for keeping updated data and then display
         dispatch(fetchEmployees()); // dispatch async action
       }
-    });// to fetch data on every rendering
+    },[]);
+    /* if not empty array - n time API call, [] - only on initial rendering, 
+      [value] - useEffect will get call on every value change */
 
   const [searchTerm, setSearchTerm] = useState('');
   const [sortConfig, setSortConfig] = useState({

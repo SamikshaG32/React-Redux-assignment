@@ -14,3 +14,5 @@ const store = configureStore({
 //here thunk middleware is configured by default
 // in createStore need tp pass other parameter as applyMiddleware(thunk)
 export default store;
+
+//spliceReducer
